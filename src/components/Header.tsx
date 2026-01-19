@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Search, User } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Input } from "@/components/ui/input";
@@ -9,7 +9,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -90,7 +89,6 @@ export default ({ searchQuery, onSearchQueryChange }: HeaderProps) => {
               ) : (
                 <DropdownMenuItem onClick={login}>Login</DropdownMenuItem>
               )}
-              <DropdownMenuSeparator />
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
