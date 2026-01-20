@@ -1,6 +1,6 @@
 # Uptick Art Gallery Project
 
-- Review UI (optional)
+- Build initial React/Tailwind/ShadCN UI (optional)
 
 - UI login to Cognito
 
