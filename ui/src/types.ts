@@ -1,6 +1,5 @@
-export type User = {
+export type OauthUser = {
   sub?: string | null;
-  nickName?: string | null;
   email?: string | null;
   email_verified?: boolean | null;
   groups?: string[];

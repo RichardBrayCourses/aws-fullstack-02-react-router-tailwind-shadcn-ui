@@ -1,9 +1,9 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import type { User } from "@/types";
+import type { OauthUser } from "@/types";
 
 interface AuthContextType {
-  user: User | null;
-  setUser: (user: User | null) => void;
+  user: OauthUser | null;
+  setUser: (user: OauthUser | null) => void;
   authenticated: boolean;
   login: () => void;
   logout: () => void;
@@ -18,7 +18,7 @@ export const useAuth = (): AuthContextType => {
 };
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<OauthUser | null>(null);
 
   return (
     <AuthContext.Provider
@@ -28,7 +28,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         authenticated: !!user,
         login: () =>
           setUser({
-            nickName: "Demo User",
             email: "demo@example.com",
           }),
         logout: () => setUser(null),
