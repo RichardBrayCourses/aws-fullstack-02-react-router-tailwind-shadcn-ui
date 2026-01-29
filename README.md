@@ -1,3 +1,3 @@
-# Initial UI - Typescript, Vite, React Router, Tailwind, ShadCN
+# UI - Typescript, Vite, React Router, Tailwind, ShadCN
 
 - includes an introduction to vi
