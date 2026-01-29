@@ -1,1 +1,1 @@
-# Build Initial UI using Vite, React Router, Tailwind and ShadCN
+# Initial UI - Vite, React Router, Tailwind, ShadCN
