@@ -1,21 +1,12 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Header() {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const stored = sessionStorage.getItem("loggedIn");
-    if (stored !== null) setLoggedIn(stored === "true");
-  }, []);
+  const { isLoggedIn, setLoggedIn } = useAuth();
 
   function toggle() {
-    setLoggedIn((prev) => {
-      const next = !prev;
-      sessionStorage.setItem("loggedIn", String(next));
-      return next;
-    });
+    setLoggedIn(!isLoggedIn);
   }
 
   return (
@@ -28,7 +19,7 @@ export default function Header() {
           <Link to="/profile">Profile</Link>
         </Button>
         <Button variant="ghost" size="sm" onClick={toggle}>
-          {loggedIn ? "logout" : "login"}
+          {isLoggedIn ? "logout" : "login"}
         </Button>
       </nav>
     </header>
