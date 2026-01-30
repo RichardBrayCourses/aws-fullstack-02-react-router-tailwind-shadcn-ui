@@ -1,4 +1,4 @@
-import ClickButton from "./ClickButton";
+import ClickButton from "@/components/ClickButton";
 
 export default function Home() {
   const buttonMessage = "Hello World";
