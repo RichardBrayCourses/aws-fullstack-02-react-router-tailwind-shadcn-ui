@@ -1,4 +1,3 @@
-import { initializeCounterButton } from "./counterButton.js";
 import {
   log,
   arrowLog,
