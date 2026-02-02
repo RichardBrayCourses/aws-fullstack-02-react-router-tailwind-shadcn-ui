@@ -23,3 +23,6 @@ runFunc(arrowLog);
 const myFunc = () => console.log("hurrah");
 runFunc(myFunc);
 runFunc(() => console.log("hurrah"));
+
+// DOM
+initializeCounterButton();
