@@ -1,18 +1,16 @@
-let icounter = 0;
+let counter = 0;
 
 const handleButtonClick = (button) => {
-  button.textContent = `Click me : ${++icounter}`;
+  button.textContent = `Click Me : ${counter++}`;
 };
 
 export const makeButton = () => {
+  const button = document.createElement("button");
+
   const container = document.getElementById("button-location");
 
-  const button = document.createElement("button");
+  button.textContent = "Click Me !";
   button.className = "center-button";
-
-  button.textContent = "Click me !";
-
   button.addEventListener("click", () => handleButtonClick(button));
-
   container.appendChild(button);
 };
