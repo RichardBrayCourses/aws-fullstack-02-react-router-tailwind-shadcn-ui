@@ -4,36 +4,49 @@ makeButton();
 
 // arrays
 
-const numbers1 = [1, 2, 3, 4, 5];
+const numbers1 = [10, 20, 30, 40, 50];
 
 let numbers2 = numbers1;
 
-numbers2.push(6);
+numbers2.push(60);
 
-function print(items) {
+// array destructuring
+
+const [first, second, third] = numbers1;
+
+function printArray(items) {
   for (const i of items) {
     console.log(i);
   }
 }
 
-print(numbers1);
+printArray(numbers1);
+
+// FOREACH
+
+const log = (i) => {
+  console.log(i);
+};
+
+numbers1.forEach(log);
 
 numbers1.forEach((i) => console.log(i));
 
-// array destructuring
+// FILTER
 
-const [first, second] = numbers1;
+const under40 = (i) => i < 40;
 
-// filter
+const u1 = numbers1.filter(under40);
 
-const lessThanFour = (num) => num < 4;
+const u2 = numbers1.filter((i) => i < 40);
 
-const evens = numbers1.filter(lessThanFour);
+// MAP
 
-// map
+const square = (i) => i * i;
 
-const square = (num) => num * num;
-const squares = numbers1.map(square);
+const s1 = numbers1.map(square);
+
+const s2 = numbers1.map((i) => i * i);
 
 // remove "unused variable" warnigns
-(evens, squares, first, second);
+(s1, s2, u1, u2, first, second, third);
