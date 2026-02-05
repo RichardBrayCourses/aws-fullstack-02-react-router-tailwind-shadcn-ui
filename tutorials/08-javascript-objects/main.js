@@ -59,4 +59,4 @@ printItemsTwice(evens);
 const [first, second] = evens;
 
 // remove "unused variable" warnigns
-console.log(name, age, myname, myage, evens, squares, first, second);
+(name, age, myname, myage, evens, squares, first, second);
