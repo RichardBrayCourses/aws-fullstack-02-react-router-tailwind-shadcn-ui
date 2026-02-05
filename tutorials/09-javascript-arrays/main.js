@@ -22,7 +22,7 @@ numbers1.forEach((i) => console.log(i));
 
 // array destructuring
 
-const [first, second] = evens;
+const [first, second] = numbers1;
 
 // filter
 
@@ -36,4 +36,4 @@ const square = (num) => num * num;
 const squares = numbers1.map(square);
 
 // remove "unused variable" warnigns
-(squares, first, second);
+(evens, squares, first, second);
