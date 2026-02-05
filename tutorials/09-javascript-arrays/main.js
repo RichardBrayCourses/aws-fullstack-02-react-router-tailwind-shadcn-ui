@@ -2,23 +2,38 @@ import { makeButton } from "./button.js";
 
 makeButton();
 
-// array
+// arrays
 
-const friends = ["Alice", "Bob", "Charlie", "Diana", "Ethan"];
+const numbers1 = [1, 2, 3, 4, 5];
 
-console.log(friends[0], friends[1]);
+let numbers2 = numbers1;
+
+numbers2.push(6);
+
+function print(items) {
+  for (const i of items) {
+    console.log(i);
+  }
+}
+
+print(numbers1);
+
+numbers1.forEach((i) => console.log(i));
 
 // array destructuring
 
-const [friend1, friend2] = friends;
-console.log(friend1, friend2);
+const [first, second] = evens;
 
-// array iteration
+// filter
 
-console.log("====== for of loop =======");
-for (const friend of friends) {
-  console.log(friend);
-}
+const lessThanFour = (num) => num < 4;
 
-console.log("===== forEach loop ======");
-friends.forEach((friend) => console.log(friend));
+const evens = numbers1.filter(lessThanFour);
+
+// map
+
+const square = (num) => num * num;
+const squares = numbers1.map(square);
+
+// remove "unused variable" warnigns
+(squares, first, second);

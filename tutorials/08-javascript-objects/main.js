@@ -33,30 +33,5 @@ incrementPersonAge(person1);
 const { name, age } = person1;
 const { name: myname, age: myage } = person1;
 
-// arrays
-
-const numbers1 = [1, 2, 3, 4, 5];
-
-let numbers2 = numbers1;
-
-numbers2.push(6);
-
-const evens = numbers1.filter((num) => num % 2 === 0);
-
-const squares = numbers1.map((num) => num * num);
-
-function printItemsTwice(items) {
-  for (const item of items) {
-    console.log(item);
-  }
-  items.forEach((item) => console.log(item));
-}
-
-printItemsTwice(evens);
-
-// array destructuring
-
-const [first, second] = evens;
-
 // remove "unused variable" warnigns
 (name, age, myname, myage, evens, squares, first, second);
