@@ -2,40 +2,62 @@ import { makeButton } from "./button.js";
 
 makeButton();
 
-let num1 = 12;
+// number primitives
+let age1 = 12;
+let age2 = age1;
+age2 = 20;
 
-let num2 = num1;
+// string primitives
+let name1 = "fred";
+let name2 = name1;
+name2 = "ginger";
 
-console.log(num1, num2);
-
-num2 = 20;
-console.log(num1, num2);
-
-let obj1 = {
+// objects
+let person1 = {
   name: "fred",
   age: 12,
 };
 
-let obj2 = obj1;
+let person2 = person1;
 
-console.log(obj1, obj2);
+person2.age = 20;
 
-obj2.age = 20;
-
-console.log(obj1, obj2);
-
-function printPerson(person) {
-  console.log(person);
+function incrementPersonAge(person) {
+  person.age++;
 }
 
-printPerson(obj1);
+incrementPersonAge(person1);
 
-// destructuring syntax
+// object destructuring
 
-const { name, age } = obj1;
+const { name, age } = person1;
+const { name: myname, age: myage } = person1;
 
-console.log(name, age);
+// arrays
 
-const { name: myname, age: myage } = obj1;
+const numbers1 = [1, 2, 3, 4, 5];
 
-console.log(myname, myage);
+let numbers2 = numbers1;
+
+numbers2.push(6);
+
+const evens = numbers1.filter((num) => num % 2 === 0);
+
+const squares = numbers1.map((num) => num * num);
+
+function printItemsTwice(items) {
+  for (const item of items) {
+    console.log(item);
+  }
+  items.forEach((item) => console.log(item));
+}
+
+printItemsTwice(items);
+
+// array destructuring
+
+const [friend1, friend2] = odds;
+console.log(friend1, friend2);
+
+// remove "unused variable" warnigns
+console.log(name, age, myname, myage, evens, squares);
