@@ -52,12 +52,11 @@ function printItemsTwice(items) {
   items.forEach((item) => console.log(item));
 }
 
-printItemsTwice(items);
+printItemsTwice(evens);
 
 // array destructuring
 
-const [friend1, friend2] = odds;
-console.log(friend1, friend2);
+const [first, second] = evens;
 
 // remove "unused variable" warnigns
-console.log(name, age, myname, myage, evens, squares);
+console.log(name, age, myname, myage, evens, squares, first, second);
