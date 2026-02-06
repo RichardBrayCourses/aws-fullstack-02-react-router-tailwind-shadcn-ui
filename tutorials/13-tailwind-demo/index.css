@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* Regular CSS-styled block */
+.custom-box {
+  width: 200px;
+  padding: 16px;
+  margin: 16px;
+  background: #3b82f6;
+  color: white;
+  font-family: sans-serif;
+  border-radius: 8px;
+  text-align: center;
+}
