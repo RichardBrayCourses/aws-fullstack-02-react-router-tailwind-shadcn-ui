@@ -6,7 +6,7 @@ node_modules
 
 # keep javascript tutorials files
 !/tutorials/**/*.js
-!/tutorials-plan/**/*.js
+!/tutorial-plan/**/*.js
 
 
 # CDK dns temp files
