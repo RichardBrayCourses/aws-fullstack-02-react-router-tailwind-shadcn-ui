@@ -1,15 +1,5 @@
 const App = () => {
-  return <p>hello world</p>;
+  return <p>our first react component !</p>;
 };
 
 export default App;
-
-/* first version 
-
-
-export const App = () => {
-  return <p>hello world</p>;
-};
-
- 
-*/
