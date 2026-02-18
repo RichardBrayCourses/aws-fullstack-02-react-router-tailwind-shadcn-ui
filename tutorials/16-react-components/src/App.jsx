@@ -1,5 +1,5 @@
 const App = () => {
-  return <p>our first react component !</p>;
+  return <p>Our First React Component !</p>;
 };
 
 export default App;
