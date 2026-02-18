@@ -1,6 +1,5 @@
 import CenterButton from "./components/CenterButton.jsx";
-
-export default function App() {
+const App = () => {
   return (
     <div className="min-h-screen flex flex-col bg-[#1e1e2f] text-neutral-100 font-sans">
       <main className="flex-1 flex flex-col items-center justify-center">
@@ -14,4 +13,6 @@ export default function App() {
       </main>
     </div>
   );
-}
+};
+
+export default App;
