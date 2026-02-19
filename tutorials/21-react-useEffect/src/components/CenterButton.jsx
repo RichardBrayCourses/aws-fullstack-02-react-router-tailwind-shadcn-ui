@@ -1,13 +1,17 @@
 import { useState } from "react";
 
-export default function CenterButton() {
-  const [count, setCount] = useState(0);
+const CenterButton = () => {
+  const [counter, setCounter] = useState(0);
+
+  const message = `clicked ${counter} times`;
   return (
     <button
-      className="mt-4 bg-[#ffd166] text-slate-800 py-1.5 px-4 text-base rounded-md border-0 cursor-pointer"
-      onClick={() => setCount(count + 1)}
+      className="mt-4 bg-[#ffd166] text-[#1e1e2f] py-1.5 px-4 text-base rounded-md border-0 cursor-pointer"
+      onClick={() => setCounter((input) => input + 1)}
     >
-      {`Clicked ${count} times !`}
+      {message}
     </button>
   );
-}
+};
+
+export default CenterButton;
