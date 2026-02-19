@@ -1,0 +1,29 @@
+import { useState } from "react";
+
+const CenterButton = () => {
+  const [counter, setCounter] = useState(0);
+
+  const message = `clicked ${counter} times`;
+  return (
+    <button
+      className="mt-4 bg-[#ffd166] text-[#1e1e2f] py-1.5 px-4 text-base rounded-md border-0 cursor-pointer"
+      onClick={() => setCounter((input) => input + 1)}
+    >
+      {message}
+    </button>
+  );
+};
+
+export default CenterButton;
+
+/* 
+
+REACT COMPONENT STATE
+
+ - data associated with a component
+
+ - generally affects the appearance of the component
+
+ => the component needs to be redisplayed when the data changes
+
+ */
