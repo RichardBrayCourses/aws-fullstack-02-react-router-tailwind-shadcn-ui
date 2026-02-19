@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const logKey = (e) => {
+function logKey(e) {
   console.log("key pressed: ", e.key);
-};
+}
 
 const CenterButton = () => {
   const [active, setActive] = useState(false);
@@ -14,7 +14,6 @@ const CenterButton = () => {
       console.log("activated, listener added");
     } else {
       setActive(false);
-      window.removeEventListener("keydown", logKey);
       console.log("deactivated, listener removed");
     }
   };
