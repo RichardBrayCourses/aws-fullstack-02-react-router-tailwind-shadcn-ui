@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-function logKey(e) {
-  console.log("key pressed: ", e.key);
+function logKey(event) {
+  console.log("key pressed: ", event.key);
 }
 
 const CenterButton = () => {
   const [active, setActive] = useState(false);
 
-  const handleActivate = () => {
+  const handleClick = () => {
     if (!active) {
       window.addEventListener("keydown", logKey);
       setActive(true);
@@ -19,12 +19,13 @@ const CenterButton = () => {
     }
   };
 
+  const message = active ? "active" : "inactive";
   return (
     <button
       className="mt-4 bg-[#ffd166] text-[#1e1e2f] py-1.5 px-4 text-base rounded-md border-0 cursor-pointer"
-      onClick={handleActivate}
+      onClick={() => handleClick()}
     >
-      {active ? "active" : "inactive"}
+      {message}
     </button>
   );
 };
