@@ -14,6 +14,7 @@ const CenterButton = () => {
       console.log("activated, listener added");
     } else {
       setActive(false);
+      window.removeEventListener("keydown", logKey);
       console.log("deactivated, listener removed");
     }
   };
