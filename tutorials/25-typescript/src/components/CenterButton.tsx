@@ -4,13 +4,13 @@ function logKey(event: KeyboardEvent): void {
   console.log("key pressed: ", event.key);
 }
 
-const CenterButton = (): JSX.Element => {
+const CenterButton = () => {
   console.log("body-start");
   const [active, setActive] = useState<boolean>(false);
 
   useEffect(effectsFunction, [active]);
 
-  function effectsFunction(): void | (() => void) {
+  function effectsFunction() {
     if (active) {
       console.log("effect-add listener, register cleanup");
       window.addEventListener("keydown", logKey);
@@ -19,7 +19,7 @@ const CenterButton = (): JSX.Element => {
     console.log("effect-did nothing");
   }
 
-  function cleanup(): void {
+  function cleanup() {
     console.log("cleanup-removing listener");
     window.removeEventListener("keydown", logKey);
   }

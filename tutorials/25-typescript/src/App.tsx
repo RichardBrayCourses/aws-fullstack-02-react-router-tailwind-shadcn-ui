@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CenterButton from "./components/CenterButton";
 
-const App = (): JSX.Element => {
+const App = () => {
   const [show, setShow] = useState<boolean>(true);
 
   return (
