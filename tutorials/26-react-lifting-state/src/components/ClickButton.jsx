@@ -1,4 +1,4 @@
-export default function ClickButton(props) {
+const ClickButton = (props) => {
   const { message, count, callback } = props;
 
   return (
@@ -11,4 +11,6 @@ export default function ClickButton(props) {
       {message}
     </button>
   );
-}
+};
+
+export default ClickButton;
