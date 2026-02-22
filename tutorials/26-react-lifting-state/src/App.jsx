@@ -1,7 +1,9 @@
+import ClickButton from "./components/ClickButton.jsx";
 import Banner from "./components/Banner.jsx";
 import { useState } from "react";
 
 export default function App() {
+  const buttonMessage = "Click Me !";
   const [count, setCount] = useState(0);
 
   return (
@@ -14,6 +16,11 @@ export default function App() {
         <div className="mt-6 flex justify-center">
           <Banner number={count} />
         </div>
+        <ClickButton
+          message={buttonMessage}
+          count={count}
+          callback={setCount}
+        />
       </div>
     </div>
   );
