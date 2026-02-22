@@ -16,7 +16,7 @@ export default function App() {
           tempore.
         </p>
         <Banner count={counter} />
-        <ClickButton message={buttonMessage} />
+        <ClickButton message={buttonMessage} count={counter} />
       </main>
     </div>
   );
