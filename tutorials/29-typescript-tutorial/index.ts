@@ -5,11 +5,13 @@
 let firstname: string;
 firstname = "fred";
 
-let myAge: number;
-myAge = 26;
+const isActivated: boolean = true;
 
-let isActivated: boolean;
-isActivated = true;
+let myAge;
+myAge = 26;
+myAge = "27";
+
+console.log(firstname, isActivated, myAge);
 
 // ====================
 // DECLARED FUNCTIONS
