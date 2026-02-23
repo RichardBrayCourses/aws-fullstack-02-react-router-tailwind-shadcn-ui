@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-const CounterContext = createContext(null);
+export const CounterContext = createContext(null);
 
 export function CounterProvider({ children }) {
   const [counter, setCounter] = useState(0);
@@ -13,4 +13,4 @@ export function CounterProvider({ children }) {
   );
 }
 
-export default CounterContext;
+export default CounterProvider;

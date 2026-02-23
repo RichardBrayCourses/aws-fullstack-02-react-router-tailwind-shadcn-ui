@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CounterContext from "../context/CounterContext.jsx";
+import { CounterContext } from "../context/CounterContext.jsx";
 
 const ClickButton = ({ message }) => {
   const { increment } = useContext(CounterContext);

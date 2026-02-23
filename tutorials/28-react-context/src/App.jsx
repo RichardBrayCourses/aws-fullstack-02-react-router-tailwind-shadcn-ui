@@ -1,6 +1,6 @@
 import Banner from "./components/Banner.jsx";
 import ClickButton from "./components/ClickButton.jsx";
-import { CounterProvider } from "./context/CounterContext.jsx";
+import CounterProvider from "./context/CounterContext.jsx";
 
 function AppContent() {
   const buttonMessage = "Click Me !";
