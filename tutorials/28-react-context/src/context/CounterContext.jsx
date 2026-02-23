@@ -1,16 +1,17 @@
-import { createContext, useState } from "react";
+import { useState, createContext } from "react";
 
 export const CounterContext = createContext(null);
 
-export function CounterProvider({ children }) {
+const CounterProvider = ({ children }) => {
   const [counter, setCounter] = useState(0);
-  const increment = () => setCounter((prev) => prev + 1);
 
-  const value = { counter, increment };
+  const sharedData = { counter, setCounter };
 
   return (
-    <CounterContext.Provider value={value}>{children}</CounterContext.Provider>
+    <CounterContext.Provider value={sharedData}>
+      {children}
+    </CounterContext.Provider>
   );
-}
+};
 
 export default CounterProvider;
