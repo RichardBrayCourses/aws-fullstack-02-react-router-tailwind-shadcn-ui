@@ -73,6 +73,15 @@ const together = pair(12, 13);
 // INTERFACES
 // ====================
 
+/*
+type Animal = {
+  name: string;
+}
+
+let pet = "Waffles"
+
+*/
+
 interface Animal {
   name: string;
 }
