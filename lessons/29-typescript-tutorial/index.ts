@@ -143,7 +143,7 @@ square(standardDeviation);
 square(standardDeviation ?? 0);
 
 // ====================================
-//  TYPESCRIPT DECLARATION FILES
+//  WORKING WITH JAVASCRIPT
 // ===================================
 
 import { greet } from "./utility.js";
