@@ -96,7 +96,7 @@ let bonzo: Dog;
 bonzo = { name: "Bonzo", breed: "Doo-Dah" };
 
 // ==============================
-//  NULL CHECKING NULLABLE VALUES
+//  NULL CHECKING
 // ==============================
 
 const x = root(10);
@@ -105,7 +105,7 @@ if (!x) throw Error("unexpected value for x");
 square(x);
 
 // ===================================
-//  NULL CHECKING OPTIONAL PROPERTIES
+//  UNDEFINED CHECKING
 // ===================================
 
 let accumulator: number = 0;
