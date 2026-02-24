@@ -51,7 +51,6 @@ const root = (value: number): number | null => {
 };
 
 let root1 = root(9);
-let root2 = root(-9);
 
 // ====================
 // GENERIC FUNCTIONS
