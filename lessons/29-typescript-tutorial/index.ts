@@ -61,7 +61,7 @@ function identity<T>(value: T): T {
 }
 
 const num = identity<number>(123);
-const str = identity<string>("hello");
+const str = identity("hello");
 
 function pair<T>(item1: T, item2: T): T[] {
   return [item1, item2];
