@@ -126,16 +126,25 @@ let m: Measurement;
 
 m = { stdDev: 2 };
 
-square(m.stdDev);
+let standardDeviation = m.stdDev;
 
-square(m.stdDev!);
+square(standardDeviation);
 
-square(m.stdDev as number);
+square(standardDeviation!);
 
-if (m.stdDev !== undefined) square(m.stdDev);
+square(standardDeviation as number);
 
-if (m.stdDev === undefined)
+if (standardDeviation !== undefined) square(standardDeviation);
+
+if (standardDeviation === undefined)
   throw Error("unexpected value for standard deviation");
-square(m.stdDev);
+square(standardDeviation);
 
-square(m.stdDev ?? 0);
+square(standardDeviation ?? 0);
+
+// ====================================
+//  TYPESCRIPT DECLARATION FILES
+// ===================================
+
+import { greet } from "./utility.js";
+console.log(greet("TypeScript"));
