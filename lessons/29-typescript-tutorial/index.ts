@@ -78,7 +78,9 @@ type Animal = {
   name: string;
 }
 
-let pet = "Waffles"
+let pet:Animal;
+
+pet = { name: "Waffles" };
 
 */
 
