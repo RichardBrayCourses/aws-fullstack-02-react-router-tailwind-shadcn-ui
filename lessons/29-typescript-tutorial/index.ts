@@ -10,16 +10,31 @@ let isActivated = true;
 console.log(firstname, isActivated);
 
 // ====================
+// TYPES
+// ====================
+
+type Person = {
+  id: number;
+  name: string;
+  age?: number;
+};
+
+let alice: Person;
+
+alice = { id: 1, name: "Alice" };
+
+// ====================
 // UNION TYPES
 // ====================
-type Id = number | string;
+type Locator = number | string | Person;
 
-function printId(id: Id) {
-  console.log(id);
+function printLocator(locator: Locator) {
+  console.log(locator);
 }
 
-printId(42);
-printId("abc");
+printLocator(42);
+printLocator("alice");
+printLocator(alice);
 
 // ====================
 // DECLARED FUNCTIONS
@@ -58,20 +73,6 @@ function pair<T>(item1: T, item2: T): T[] {
 }
 
 const together = pair(12, 13);
-
-// ====================
-// TYPES
-// ====================
-
-type Person = {
-  id: number;
-  name: string;
-  age?: number;
-};
-
-let alice: Person;
-
-alice = { id: 1, name: "Alice" };
 
 // ====================
 // INTERFACES
