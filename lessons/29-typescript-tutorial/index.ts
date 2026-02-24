@@ -26,15 +26,11 @@ alice = { id: 1, name: "Alice" };
 // ====================
 // UNION TYPES
 // ====================
-type Locator = number | string | Person;
 
-function printLocator(locator: Locator) {
-  console.log(locator);
-}
+type Id = number | string;
 
-printLocator(42);
-printLocator("alice");
-printLocator(alice);
+let xxx: Id = 42;
+let yyy: Id = "abc";
 
 // ====================
 // DECLARED FUNCTIONS
