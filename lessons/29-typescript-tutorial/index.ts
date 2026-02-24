@@ -144,7 +144,9 @@ square(standardDeviation ?? 0);
 
 // ====================================
 //  WORKING WITH JAVASCRIPT
+//  TYPESCRIPT DECLARATION FILE
 // ===================================
 
 import { greet } from "./utility.js";
-console.log(greet("TypeScript"));
+
+const message: string = greet("TypeScript");
