@@ -103,12 +103,16 @@ const answer = root(10);
 
 square(answer);
 
+square(answer!);
+
+square(answer as number);
+
 if (answer !== null) square(answer);
 
 if (answer === null) throw Error("unexpected value for answer");
 square(answer);
 
-square(answer && 0);
+square(answer ?? 0);
 
 // ===================================
 //  UNDEFINED CHECKING
@@ -124,10 +128,14 @@ m = { stdDev: 2 };
 
 square(m.stdDev);
 
+square(m.stdDev!);
+
+square(m.stdDev as number);
+
 if (m.stdDev !== undefined) square(m.stdDev);
 
 if (m.stdDev === undefined)
   throw Error("unexpected value for standard deviation");
 square(m.stdDev);
 
-square(m.stdDev && 0);
+square(m.stdDev ?? 0);
