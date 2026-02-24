@@ -99,15 +99,35 @@ bonzo = { name: "Bonzo", breed: "Doo-Dah" };
 //  NULL CHECKING
 // ==============================
 
-const x = root(10);
-if (!x) throw Error("unexpected value for x");
+const answer = root(10);
 
-square(x);
+square(answer);
+
+if (answer !== null) square(answer);
+
+if (answer === null) throw Error("unexpected value for answer");
+square(answer);
+
+square(answer && 0);
 
 // ===================================
 //  UNDEFINED CHECKING
 // ===================================
 
-let accumulator: number = 0;
+interface Measurement {
+  stdDev?: number;
+}
 
-if (alice.age) accumulator += alice.age;
+let m: Measurement;
+
+m = { stdDev: 2 };
+
+square(m.stdDev);
+
+if (m.stdDev !== undefined) square(m.stdDev);
+
+if (m.stdDev === undefined)
+  throw Error("unexpected value for standard deviation");
+square(m.stdDev);
+
+square(m.stdDev && 0);
