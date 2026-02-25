@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import { CounterContext } from "../context/CounterContext";
+import { useCounter } from "../context/CounterContext";
 
 interface ClickButtonProps {
   message: string;
 }
 
 const ClickButton = ({ message }: ClickButtonProps) => {
-  const value = useContext(CounterContext)!;
+  const value = useCounter();
   const { counter, setCounter } = value;
 
   return (

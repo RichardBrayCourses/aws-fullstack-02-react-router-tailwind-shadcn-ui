@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { CounterContext } from "../context/CounterContext";
+import { useCounter } from "../context/CounterContext";
 
 const Banner = () => {
-  const value = useContext(CounterContext)!;
+  const value = useCounter();
   const { counter } = value;
 
   return (
