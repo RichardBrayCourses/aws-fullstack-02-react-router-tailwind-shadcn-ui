@@ -1,4 +1,4 @@
-# Conversion Steps
+# CONVERSION PART 1
 
 ## 1. Add tsconfig.json file
 
@@ -22,10 +22,60 @@
     "typescript": "5.9.3"
 ```
 
-## 5. Modify CounterContext.tsx to add types
+# CONVERSION PART 2 : TYPES
+
+## 1. CounterContext.tsx Types
+
+```ts
+import { useState, createContext, ReactNode } from "react";
+
+/////////////
+// CONTEXT
+/////////////
+
+interface CounterContextValue {
+  counter: number;
+  setCounter: (n: number) => void;
+}
+
+export const CounterContext = createContext<CounterContextValue | null>(null);
+
+/////////////
+// PROVIDER
+/////////////
+
+interface CounterProviderProps {
+  children: ReactNode;
+}
+
+const CounterProvider = ({ children }: CounterProviderProps) => {
+```
+
+## 2. ClickButton.tsx Types
+
+```ts
+import { useContext } from "react";
+import { CounterContext } from "../context/CounterContext";
+
+interface ClickButtonProps {
+  message: string;
+}
+
+const ClickButton = (props: ClickButtonProps) => {
+  const { message } = props;
+
+```
+
+# CONVERSION PART 3 : NULLS
+
+## 5. CounterContext.tsx helper
 
 ```ts
 import { useState, createContext, useContext, ReactNode } from "react";
+
+/////////////
+// CONTEXT
+/////////////
 
 interface CounterContextValue {
   counter: number;
@@ -34,22 +84,18 @@ interface CounterContextValue {
 
 const CounterContext = createContext<CounterContextValue | null>(null);
 
-interface CounterProviderProps {
-  children: ReactNode;
-}
+/////////////
+// HELPER
+/////////////
 
 export function useCounter() {
   const ctx = useContext(CounterContext);
   if (!ctx) throw new Error("useCounter must be used within <CounterProvider>");
   return ctx;
 }
-
-const CounterProvider = ({ children }: CounterProviderProps) => {
-  // rest
-
 ```
 
-## 6. Modify Banner.tsx
+## 6. Convert Banner.tsx to use helper
 
 ```ts
 import { useCounter } from "../context/CounterContext";
@@ -59,7 +105,7 @@ const Banner = () => {
 
 ```
 
-## 7. Modify ClickButton.tsx
+## 7. Convert ClickButton.tsx to use helper
 
 ```ts
 import { useCounter } from "../context/CounterContext";
@@ -69,6 +115,7 @@ interface ClickButtonProps {
 }
 
 const ClickButton = ({ message }: ClickButtonProps) => {
+
   const value = useCounter();
 ```
 
@@ -106,3 +153,9 @@ npm run preview
 ```
 
 check dev tools console.log for errors
+
+# LESSON PLAN
+
+1. tsconfig.json, rename files and imports, modify package.json
+2. add types to our source code
+3. fix nulls and run

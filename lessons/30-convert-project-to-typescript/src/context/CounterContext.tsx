@@ -1,5 +1,9 @@
 import { useState, createContext, useContext, ReactNode } from "react";
 
+/////////////
+// CONTEXT
+/////////////
+
 interface CounterContextValue {
   counter: number;
   setCounter: (n: number) => void;
@@ -7,14 +11,22 @@ interface CounterContextValue {
 
 const CounterContext = createContext<CounterContextValue | null>(null);
 
-interface CounterProviderProps {
-  children: ReactNode;
-}
+/////////////
+// HELPER
+/////////////
 
 export function useCounter() {
   const ctx = useContext(CounterContext);
   if (!ctx) throw new Error("useCounter must be used within <CounterProvider>");
   return ctx;
+}
+
+/////////////
+// PROVIDER
+/////////////
+
+interface CounterProviderProps {
+  children: ReactNode;
 }
 
 const CounterProvider = ({ children }: CounterProviderProps) => {
