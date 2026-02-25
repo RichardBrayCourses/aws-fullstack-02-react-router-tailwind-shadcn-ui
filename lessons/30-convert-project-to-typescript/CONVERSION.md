@@ -89,9 +89,10 @@ const CounterContext = createContext<CounterContextValue | null>(null);
 /////////////
 
 export function useCounter() {
-  const ctx = useContext(CounterContext);
-  if (!ctx) throw new Error("useCounter must be used within <CounterProvider>");
-  return ctx;
+  const value = useContext(CounterContext);
+  if (!value)
+    throw new Error("useCounter must be used within <CounterProvider>");
+  return value;
 }
 ```
 

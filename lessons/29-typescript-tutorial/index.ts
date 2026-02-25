@@ -60,14 +60,13 @@ function identity<T>(value: T): T {
   return value;
 }
 
+let xxxxxxx = identity(10);
+
 const num = identity<number>(123);
-const str = identity("hello");
 
-function pair<T>(item1: T, item2: T): T[] {
-  return [item1, item2];
-}
+const str = identity<string>("hello");
 
-const together = pair(12, 13);
+console.log(xxxxxxx, num, str);
 
 // ====================
 // INTERFACES
