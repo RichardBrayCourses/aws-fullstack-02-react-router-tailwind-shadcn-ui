@@ -10,13 +10,9 @@ export default function Header() {
     if (stored !== null) setLoggedIn(stored === "true");
   }, []);
 
-  function toggle() {
-    setLoggedIn((prev) => {
-      const next = !prev;
-      sessionStorage.setItem("loggedIn", String(next));
-      return next;
-    });
-  }
+  useEffect(() => {
+    sessionStorage.setItem("loggedIn", String(loggedIn));
+  }, [loggedIn]);
 
   return (
     <header className="border-b border-slate-700 bg-slate-800 px-4 py-3">
@@ -27,7 +23,11 @@ export default function Header() {
         <Button asChild variant="ghost" size="sm">
           <Link to="/profile">Profile</Link>
         </Button>
-        <Button variant="ghost" size="sm" onClick={toggle}>
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setLoggedIn((value) => !value)}
+        >
           {loggedIn ? "logout" : "login"}
         </Button>
       </nav>

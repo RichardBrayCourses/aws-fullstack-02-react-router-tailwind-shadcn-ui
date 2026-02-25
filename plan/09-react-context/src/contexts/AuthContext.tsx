@@ -1,6 +1,16 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
-type AuthContextType = { isLoggedIn: boolean; setLoggedIn: (value: boolean) => void };
+type AuthContextType = {
+  isLoggedIn: boolean;
+  setLoggedIn: Dispatch<SetStateAction<boolean>>;
+};
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -12,13 +22,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (stored !== null) setLoggedIn(stored === "true");
   }, []);
 
-  function setAndPersist(value: boolean) {
-    setLoggedIn(value);
-    sessionStorage.setItem("loggedIn", String(value));
-  }
+  useEffect(() => {
+    sessionStorage.setItem("loggedIn", String(isLoggedIn));
+  }, [isLoggedIn]);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn: setAndPersist }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn }}>
       {children}
     </AuthContext.Provider>
   );
