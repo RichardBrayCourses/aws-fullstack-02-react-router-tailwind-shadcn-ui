@@ -24,7 +24,22 @@
 
 # CONVERSION PART 2 : TYPES
 
-## 1. CounterContext.tsx Types
+## 1. ClickButton.tsx Types
+
+```ts
+import { useContext } from "react";
+import { CounterContext } from "../context/CounterContext";
+
+interface ClickButtonProps {
+  message: string;
+}
+
+const ClickButton = (props: ClickButtonProps) => {
+  const { message } = props;
+
+```
+
+## 2. CounterContext.tsx Types
 
 ```ts
 import { useState, createContext, ReactNode } from "react";
@@ -49,21 +64,6 @@ interface CounterProviderProps {
 }
 
 const CounterProvider = ({ children }: CounterProviderProps) => {
-```
-
-## 2. ClickButton.tsx Types
-
-```ts
-import { useContext } from "react";
-import { CounterContext } from "../context/CounterContext";
-
-interface ClickButtonProps {
-  message: string;
-}
-
-const ClickButton = (props: ClickButtonProps) => {
-  const { message } = props;
-
 ```
 
 # CONVERSION PART 3 : NULLS
