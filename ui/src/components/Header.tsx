@@ -21,11 +21,7 @@ type HeaderProps = {
 export default ({ searchQuery, onSearchQueryChange }: HeaderProps) => {
   const location = useLocation();
 
-  const { authenticated, login, logout } = useAuth();
-
-  const logoutUser = async () => {
-    logout();
-  };
+  const { userInfo, loginUser, logoutUser } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -84,10 +80,10 @@ export default ({ searchQuery, onSearchQueryChange }: HeaderProps) => {
             </DropdownMenuTrigger>
 
             <DropdownMenuContent align="end">
-              {authenticated ? (
+              {userInfo?.isLoggedIn ? (
                 <DropdownMenuItem onClick={logoutUser}>Logout</DropdownMenuItem>
               ) : (
-                <DropdownMenuItem onClick={login}>Login</DropdownMenuItem>
+                <DropdownMenuItem onClick={loginUser}>Login</DropdownMenuItem>
               )}
             </DropdownMenuContent>
           </DropdownMenu>
