@@ -14,13 +14,13 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+function getInitialLoggedIn() {
+  const stored = sessionStorage.getItem("loggedIn");
+  return stored === "true";
+}
 
-  useEffect(() => {
-    const stored = sessionStorage.getItem("loggedIn");
-    if (stored !== null) setLoggedIn(stored === "true");
-  }, []);
+export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [isLoggedIn, setLoggedIn] = useState(getInitialLoggedIn);
 
   useEffect(() => {
     sessionStorage.setItem("loggedIn", String(isLoggedIn));
