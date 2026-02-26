@@ -3,8 +3,9 @@ import ClickButton from "./components/ClickButton";
 import CounterProvider from "./context/CounterContext";
 
 const AppContent = () => {
-  const buttonMessage = "Click Me !";
   document.documentElement.classList.toggle("dark", true);
+
+  const buttonMessage = "Click Me !";
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
