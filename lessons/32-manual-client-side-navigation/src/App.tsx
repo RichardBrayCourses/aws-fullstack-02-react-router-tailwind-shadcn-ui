@@ -20,21 +20,27 @@ const AppContent = () => {
         <ClickButton message={buttonMessage} />
 
         <button
-          onClick={() => (window.location.href = "https://google.com")}
+          onClick={() => {
+            window.location.href = "https://google.com";
+          }}
           className="w-100 px-4 py-2 bg-green-500 text-white rounded"
         >
           go to google.com
         </button>
 
         <button
-          onClick={() => (window.location.href = "http://localhost:5173")}
+          onClick={() => {
+            window.location.href = "http://localhost:5173";
+          }}
           className="w-100 px-4 py-2 bg-green-500 text-white rounded"
         >
           go to http://localhost:5173
         </button>
 
         <button
-          onClick={() => (window.location.href = "http://localhost:5173/xxx")}
+          onClick={() => {
+            window.location.href = "http://localhost:5173/xxx";
+          }}
           className="w-100 px-4 py-2 bg-green-500 text-white rounded"
         >
           go to http://localhost:5173/xxx
