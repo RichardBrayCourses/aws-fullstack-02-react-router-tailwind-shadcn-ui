@@ -7,7 +7,7 @@ const AppContent = () => {
   document.documentElement.classList.toggle("dark", true);
 
   return (
-    <div className="min-h-screen flex flex-col  font-sans">
+    <div className="min-h-screen flex flex-col font-sans">
       <main className="flex-1 flex flex-col items-center justify-top">
         <h1 className="mt-4 text-3xl font-bold">Good Morning</h1>
         <h2 className="mt-4 text-2xl font-bold">Time for Coffee</h2>
