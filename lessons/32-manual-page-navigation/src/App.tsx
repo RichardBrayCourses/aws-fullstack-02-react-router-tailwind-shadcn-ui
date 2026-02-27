@@ -5,13 +5,13 @@ import CounterProvider from "./context/CounterContext";
 
 const AppContent = () => {
   document.documentElement.classList.toggle("dark", true);
-
+  const isProfile = window.location.href.includes("Profile");
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1 flex flex-col bg-sky-500">
-        <Home />
-        <Profile />
+      <main className="flex-1 flex flex-col bg-white text-black">
+        {!isProfile && <Home />}
+        {isProfile && <Profile />}
       </main>
     </div>
   );
