@@ -37,7 +37,7 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [dark, setDark] = useState<boolean>(false);
+  const [dark, setDark] = useState(false);
 
   const sharedData = { dark, setDark };
 
