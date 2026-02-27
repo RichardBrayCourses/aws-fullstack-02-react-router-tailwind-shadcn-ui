@@ -1,15 +1,17 @@
 import Header from "./components/Header";
+import CounterProvider from "./context/CounterContext";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
-import CounterProvider from "./context/CounterContext";
 
 const AppContent = () => {
   document.documentElement.classList.toggle("dark", true);
+
   console.log("HREF: ", window.location.href);
+
   const page = window.location.href.includes("Profile") ? "profile" : "home";
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col font-sans">
       <Header />
       <main className="flex-1 flex flex-col bg-white text-black">
         {page === "home" && <Home />}
