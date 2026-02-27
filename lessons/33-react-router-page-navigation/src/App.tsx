@@ -6,11 +6,10 @@ import CounterProvider from "./context/CounterContext";
 
 const AppContent = () => {
   document.documentElement.classList.toggle("dark", true);
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1 flex flex-col bg-sky-500">
+      <main className="flex-1 flex flex-col bg-white text-black">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
