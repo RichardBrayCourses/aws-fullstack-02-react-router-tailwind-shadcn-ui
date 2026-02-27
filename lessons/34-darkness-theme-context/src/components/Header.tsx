@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const { dark, setDark } = useTheme();
-
   return (
     <header className="bg-sky-500 text-white flex align-center">
       <Button className="m-1" asChild variant="ghost">
@@ -18,7 +17,9 @@ const Header = () => {
         className="m-1"
         variant="ghost"
         size="icon"
-        onClick={() => setDark(!dark)}
+        onClick={() => {
+          setDark(!dark);
+        }}
       >
         {dark ? <Sun /> : <Moon />}
       </Button>
