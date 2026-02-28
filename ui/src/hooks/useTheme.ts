@@ -4,6 +4,10 @@ function getInitialValue() {
   return localStorage.getItem("theme") === "dark";
 }
 
+// useTheme is a React "hook" function
+// - it calls other React hooks such as useState(...), useEffect(...)
+// - the name of the function starts with "use"
+
 export function useTheme() {
   const [dark, setDark] = useState(getInitialValue);
 

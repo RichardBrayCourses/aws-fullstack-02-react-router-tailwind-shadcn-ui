@@ -5,13 +5,17 @@ const MOCK_USER: User = {
   email: "demo@example.com",
 };
 
-function getInitialUser(): User | null {
+function getInitialValue(): User | null {
   const stored = sessionStorage.getItem("user");
   return stored ? (JSON.parse(stored) as User) : null;
 }
 
+// useAuth is a React "hook" function
+// - it calls other React hooks such as useState(...), useEffect(...)
+// - the name of the function starts with "use"
+
 export function useAuth() {
-  const [user, setUser] = useState<User | null>(getInitialUser);
+  const [user, setUser] = useState<User | null>(getInitialValue);
   const isLoggedIn = !!user;
 
   useEffect(() => {

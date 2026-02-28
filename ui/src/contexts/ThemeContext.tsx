@@ -11,21 +11,21 @@ import { useTheme as useThemeState } from "@/hooks/useTheme";
 // CONTEXT
 /////////////
 
-interface ThemeContextType {
+interface ThemeContextValue {
   dark: boolean;
   setDark: Dispatch<SetStateAction<boolean>>;
 }
 
-const ThemeContext = createContext<ThemeContextType | null>(null);
+const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 /////////////
 // HELPER
 /////////////
 
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) throw new Error("useTheme must be used within ThemeProvider");
-  return context;
+  const value = useContext(ThemeContext);
+  if (!value) throw new Error("useTheme must be used within ThemeProvider");
+  return value;
 };
 
 /////////////
