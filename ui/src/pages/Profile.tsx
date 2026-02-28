@@ -1,9 +1,9 @@
-import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useStoredAuth } from "@/hooks/useStoredAuth";
 
 export default () => {
-  const { user, isLoggedIn, login, logout } = useAuth();
+  const { user, isLoggedIn, login, logout } = useStoredAuth();
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -15,8 +15,7 @@ export default () => {
               <p className="text-muted-foreground">Click below to log in.</p>
             ) : (
               <p>
-                You are logged in as{" "}
-                <strong>{user?.email || "User"}</strong>.
+                You are logged in as <strong>{user?.email || "User"}</strong>.
               </p>
             )}
           </CardContent>

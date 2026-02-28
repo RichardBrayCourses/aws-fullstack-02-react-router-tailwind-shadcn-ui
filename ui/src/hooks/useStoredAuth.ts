@@ -10,11 +10,7 @@ function getInitialValue(): User | null {
   return stored ? (JSON.parse(stored) as User) : null;
 }
 
-// useAuth is a React "hook" function
-// - it calls other React hooks such as useState(...), useEffect(...)
-// - the name of the function starts with "use"
-
-export function useAuth() {
+export function useStoredAuth() {
   const [user, setUser] = useState<User | null>(getInitialValue);
   const isLoggedIn = !!user;
 

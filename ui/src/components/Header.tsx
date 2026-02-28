@@ -1,7 +1,6 @@
 import { FormEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Search, User } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
 import { Input } from "@/components/ui/input";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
+import { useStoredAuth } from "@/hooks/useStoredAuth";
 
 type HeaderProps = {
   searchQuery: string;
@@ -21,7 +21,7 @@ type HeaderProps = {
 export default ({ searchQuery, onSearchQueryChange }: HeaderProps) => {
   const location = useLocation();
 
-  const { isLoggedIn, login, logout } = useAuth();
+  const { isLoggedIn, login, logout } = useStoredAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">

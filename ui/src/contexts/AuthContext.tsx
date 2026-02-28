@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext } from "react";
-import { useAuth as useAuthState } from "@/hooks/useAuth";
+import { useStoredAuth } from "@/hooks/useStoredAuth";
 import type { User } from "@/types";
 
 /////////////
@@ -34,7 +34,7 @@ interface AuthProviderProps {
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const value = useAuthState();
+  const value = useStoredAuth();
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
