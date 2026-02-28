@@ -1,25 +1,49 @@
-import { createContext, ReactNode, useContext } from "react";
-import { useDarkness } from "@/hooks/useDarkness";
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+} from "react";
+import { useTheme as useThemeState } from "@/hooks/useTheme";
 
-type ThemeContextType = {
+/////////////
+// CONTEXT
+/////////////
+
+interface ThemeContextType {
   dark: boolean;
-  setDark: React.Dispatch<React.SetStateAction<boolean>>;
-};
+  setDark: Dispatch<SetStateAction<boolean>>;
+}
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [dark, setDark] = useDarkness();
+/////////////
+// HELPER
+/////////////
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) throw new Error("useTheme must be used within ThemeProvider");
+  return context;
+};
+
+/////////////
+// PROVIDER
+/////////////
+
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  const [dark, setDark] = useThemeState();
 
   return (
     <ThemeContext.Provider value={{ dark, setDark }}>
       {children}
     </ThemeContext.Provider>
   );
-}
+};
 
-export function useTheme() {
-  const ctx = useContext(ThemeContext);
-  if (!ctx) throw new Error("useTheme must be used within ThemeProvider");
-  return ctx;
-}
+export default ThemeProvider;

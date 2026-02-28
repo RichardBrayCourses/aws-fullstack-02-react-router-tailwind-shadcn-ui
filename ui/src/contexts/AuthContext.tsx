@@ -1,52 +1,28 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext } from "react";
+import { useAuth as useAuthState } from "@/hooks/useAuth";
+import type { User } from "@/types";
 
-export type UserInfo = {
+interface AuthContextType {
+  user: User | null;
   isLoggedIn: boolean;
-  sub?: string | null;
-  email?: string | null;
-  email_verified?: boolean | null;
-  groups?: string[];
-};
-
-type AuthContextType = {
-  userInfo: UserInfo | null;
-  loginUser: () => void;
-  logoutUser: () => void;
-};
-
-const loggedInState = {
-  isLoggedIn: true,
-  email: "demo@example.com",
-};
-const loggedOutState = { isLoggedIn: false };
+  login: () => void;
+  logout: () => void;
+}
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-function getInitialLoggedIn() {
-  const stored = sessionStorage.getItem("userInfo");
-  return stored ? (JSON.parse(stored) as UserInfo) : null;
-}
-
-export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [userInfo, setUserInfo] = useState<UserInfo | null>(getInitialLoggedIn);
-
-  useEffect(() => {
-    sessionStorage.setItem("userInfo", JSON.stringify(userInfo));
-  }, [userInfo]);
-
-  const contextValue = {
-    userInfo,
-    loginUser: () => setUserInfo(loggedInState),
-    logoutUser: () => setUserInfo(loggedOutState),
-  };
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const value = useAuthState();
 
   return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
   );
-}
+};
 
-export function useAuth() {
+export const useAuth = () => {
   const ctx = useContext(AuthContext);
   if (!ctx) throw new Error("useAuth must be used within AuthProvider");
   return ctx;
-}
+};

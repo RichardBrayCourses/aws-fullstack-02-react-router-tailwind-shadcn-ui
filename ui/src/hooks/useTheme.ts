@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-function getInitialDark() {
+function getInitialValue() {
   return localStorage.getItem("theme") === "dark";
 }
 
-export function useDarkness() {
-  const [dark, setDark] = useState(getInitialDark);
+export function useTheme() {
+  const [dark, setDark] = useState(getInitialValue);
 
   useEffect(() => {
     localStorage.setItem("theme", dark ? "dark" : "light");
