@@ -4,8 +4,9 @@ import {
   ReactNode,
   SetStateAction,
   useContext,
+  useEffect,
+  useState,
 } from "react";
-import { useStoredTheme } from "@/hooks/useStoredTheme";
 
 /////////////
 // CONTEXT
@@ -37,7 +38,12 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [dark, setDark] = useStoredTheme();
+  const [dark, setDark] = useState(localStorage.getItem("theme") === "dark");
+
+  useEffect(() => {
+    localStorage.setItem("theme", dark ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", dark);
+  }, [dark]);
 
   return (
     <ThemeContext.Provider value={{ dark, setDark }}>

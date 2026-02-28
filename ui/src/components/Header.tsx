@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Search, User } from "lucide-react";
+import { Search, User, Moon, Sun } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -9,9 +9,11 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
-import { useStoredAuth } from "@/hooks/useStoredAuth";
+
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "@/contexts/ThemeContext";
 
 type HeaderProps = {
   searchQuery: string;
@@ -20,8 +22,9 @@ type HeaderProps = {
 
 export default ({ searchQuery, onSearchQueryChange }: HeaderProps) => {
   const location = useLocation();
+  const { dark, setDark } = useTheme();
 
-  const { isLoggedIn, login, logout } = useStoredAuth();
+  const { isLoggedIn, login, logout } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -69,7 +72,9 @@ export default ({ searchQuery, onSearchQueryChange }: HeaderProps) => {
               Profile
             </Link>
           </nav>
-          <ThemeToggle />
+          <Button variant="ghost" size="icon" onClick={() => setDark(!dark)}>
+            {dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </Button>
 
           <DropdownMenu>
             <DropdownMenuTrigger

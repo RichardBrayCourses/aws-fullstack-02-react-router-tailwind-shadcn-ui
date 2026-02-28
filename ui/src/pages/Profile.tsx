@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useStoredAuth } from "@/hooks/useStoredAuth";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default () => {
-  const { user, isLoggedIn, login, logout } = useStoredAuth();
+  const { user, isLoggedIn, login, logout } = useAuth();
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
