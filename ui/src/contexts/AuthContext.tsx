@@ -11,8 +11,11 @@ import type { User } from "@/types";
 // CONTEXT
 /////////////
 
-interface AuthContextValue {
+interface AuthContextData {
   user: User | null;
+}
+
+interface AuthContextValue extends AuthContextData {
   isLoggedIn: boolean;
   login: () => void;
   logout: () => void;
@@ -30,6 +33,19 @@ export const useAuth = () => {
   return value;
 };
 
+////////////////////////
+// LOAD / SAVE CONTEXT
+////////////////////////
+
+function saveContext(contextData: AuthContextData) {
+  sessionStorage.setItem("user", JSON.stringify(contextData));
+}
+
+function loadContext(): AuthContextData {
+  const stored = sessionStorage.getItem("user");
+  return stored ? (JSON.parse(stored) as AuthContextData) : { user: null };
+}
+
 /////////////
 // PROVIDER
 /////////////
@@ -38,21 +54,17 @@ const MOCK_USER: User = {
   email: "demo@example.com",
 };
 
-function getInitialValue(): User | null {
-  const stored = sessionStorage.getItem("user");
-  return stored ? (JSON.parse(stored) as User) : null;
-}
-
 interface AuthProviderProps {
   children: ReactNode;
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User | null>(getInitialValue);
+  const loadedContext = loadContext();
+  const [user, setUser] = useState<User | null>(loadedContext.user);
   const isLoggedIn = !!user;
 
   useEffect(() => {
-    sessionStorage.setItem("user", JSON.stringify(user));
+    saveContext({ user });
   }, [user]);
 
   const login = () => setUser(MOCK_USER);
