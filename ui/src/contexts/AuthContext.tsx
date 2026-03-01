@@ -5,18 +5,17 @@ import {
   useEffect,
   useState,
 } from "react";
-import type { User } from "@/types";
 
-/////////////
-// CONTEXT
-/////////////
+export interface AuthenticatedUser {
+  isLoggedIn: boolean;
+  email: string | null;
+}
 
 interface AuthContextData {
-  user: User | null;
+  user: AuthenticatedUser;
 }
 
 interface AuthContextValue extends AuthContextData {
-  isLoggedIn: boolean;
   login: () => void;
   logout: () => void;
 }
@@ -37,22 +36,30 @@ export const useAuth = () => {
 // LOAD / SAVE CONTEXT
 ////////////////////////
 
+const LOGGED_OUT_USER = {
+  isLoggedIn: false,
+  email: null,
+};
+
+const LOGGED_IN_USER = {
+  isLoggedIn: true,
+  email: "demo@example.com",
+};
+
 function saveContext(contextData: AuthContextData) {
-  sessionStorage.setItem("user", JSON.stringify(contextData));
+  sessionStorage.setItem("user", JSON.stringify(contextData.user));
 }
 
 function loadContext(): AuthContextData {
   const stored = sessionStorage.getItem("user");
-  return stored ? (JSON.parse(stored) as AuthContextData) : { user: null };
+  return {
+    user: stored ? (JSON.parse(stored) as AuthenticatedUser) : LOGGED_OUT_USER,
+  };
 }
 
 /////////////
 // PROVIDER
 /////////////
-
-const MOCK_USER: User = {
-  email: "demo@example.com",
-};
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -60,17 +67,16 @@ interface AuthProviderProps {
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const loadedContext = loadContext();
-  const [user, setUser] = useState<User | null>(loadedContext.user);
-  const isLoggedIn = !!user;
+  const [user, setUser] = useState<AuthenticatedUser>(loadedContext.user);
 
   useEffect(() => {
     saveContext({ user });
   }, [user]);
 
-  const login = () => setUser(MOCK_USER);
-  const logout = () => setUser(null);
+  const login = () => setUser(LOGGED_IN_USER);
+  const logout = () => setUser(LOGGED_OUT_USER);
 
-  const value = { user, isLoggedIn, login, logout };
+  const value = { user, login, logout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

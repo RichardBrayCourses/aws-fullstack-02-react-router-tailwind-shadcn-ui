@@ -5,15 +5,15 @@ import { createContext, ReactNode, useContext, useState } from "react";
 /////////////
 
 export interface AuthenticatedUser {
-  email: string;
+  isLoggedIn: boolean;
+  email: string | null;
 }
 
 interface AuthContextData {
-  user: AuthenticatedUser | null;
+  user: AuthenticatedUser;
 }
 
 interface AuthContextValue extends AuthContextData {
-  isLoggedIn: boolean;
   login: () => void;
   logout: () => void;
 }
@@ -34,7 +34,13 @@ export const useAuth = () => {
 // PROVIDER
 /////////////
 
-const MOCK_USER = {
+const LOGGED_OUT_USER = {
+  isLoggedIn: false,
+  email: null,
+};
+
+const LOGGED_IN_USER = {
+  isLoggedIn: true,
   email: "demo@example.com",
 };
 
@@ -43,15 +49,12 @@ interface AuthProviderProps {
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<AuthenticatedUser | null>(null);
+  const [user, setUser] = useState<AuthenticatedUser>(LOGGED_OUT_USER);
 
-  const login = () => setUser(MOCK_USER);
+  const login = () => setUser(LOGGED_IN_USER);
+  const logout = () => setUser(LOGGED_OUT_USER);
 
-  const logout = () => setUser(null);
-
-  const isLoggedIn = !!user;
-
-  const value = { user, isLoggedIn, login, logout };
+  const value = { user, login, logout };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
