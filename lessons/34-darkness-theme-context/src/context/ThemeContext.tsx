@@ -5,14 +5,17 @@ import {
   ReactNode,
   Dispatch,
   SetStateAction,
+  useEffect,
 } from "react";
 
 /////////////
 // CONTEXT
 /////////////
 
-interface ThemeContextValue {
+interface ThemeContextData {
   dark: boolean;
+}
+interface ThemeContextValue extends ThemeContextData {
   setDark: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -28,6 +31,19 @@ export function useTheme() {
   return value;
 }
 
+////////////////////////
+// LOAD / SAVE CONTEXT
+////////////////////////
+
+function saveContext(contextData: ThemeContextData) {
+  localStorage.setItem("dark", contextData.dark ? "true" : "false");
+}
+
+function loadContext(): ThemeContextData {
+  const dark = localStorage.getItem("dark") === "true";
+  return { dark };
+}
+
 /////////////
 // PROVIDER
 /////////////
@@ -37,7 +53,12 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(loadContext().dark);
+
+  useEffect(() => {
+    saveContext({ dark });
+    document.documentElement.classList.toggle("dark", dark);
+  }, [dark]);
 
   const sharedData = { dark, setDark };
 

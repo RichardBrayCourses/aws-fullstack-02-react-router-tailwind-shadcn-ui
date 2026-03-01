@@ -1,19 +1,21 @@
 import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useEffect,
   useState,
+  createContext,
+  useContext,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+  useEffect,
 } from "react";
 
 /////////////
 // CONTEXT
 /////////////
 
-interface ThemeContextValue {
+interface ThemeContextData {
   dark: boolean;
+}
+interface ThemeContextValue extends ThemeContextData {
   setDark: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -23,11 +25,24 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 // HELPER
 /////////////
 
-export const useTheme = () => {
+export function useTheme() {
   const value = useContext(ThemeContext);
-  if (!value) throw new Error("useTheme must be used within ThemeProvider");
+  if (!value) throw new Error("useTheme must be used within <ThemeProvider>");
   return value;
-};
+}
+
+////////////////////////
+// LOAD / SAVE CONTEXT
+////////////////////////
+
+function saveContext(contextData: ThemeContextData) {
+  localStorage.setItem("dark", contextData.dark ? "true" : "false");
+}
+
+function loadContext(): ThemeContextData {
+  const dark = localStorage.getItem("dark") === "true";
+  return { dark };
+}
 
 /////////////
 // PROVIDER
@@ -38,17 +53,17 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [dark, setDark] = useState(localStorage.getItem("theme") === "dark");
+  const [dark, setDark] = useState(loadContext().dark);
 
   useEffect(() => {
-    localStorage.setItem("theme", dark ? "dark" : "light");
+    saveContext({ dark });
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
 
+  const sharedData = { dark, setDark };
+
   return (
-    <ThemeContext.Provider value={{ dark, setDark }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={sharedData}>{children}</ThemeContext.Provider>
   );
 };
 
