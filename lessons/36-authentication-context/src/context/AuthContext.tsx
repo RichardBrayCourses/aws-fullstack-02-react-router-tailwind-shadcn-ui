@@ -4,12 +4,12 @@ import { createContext, ReactNode, useContext, useState } from "react";
 // CONTEXT
 /////////////
 
-export interface User {
+export interface AuthenticatedUser {
   email: string;
 }
 
 interface AuthContextData {
-  user: User | null;
+  user: AuthenticatedUser | null;
 }
 
 interface AuthContextValue extends AuthContextData {
@@ -43,11 +43,13 @@ interface AuthProviderProps {
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<User | null>(null);
-  const isLoggedIn = !!user;
+  const [user, setUser] = useState<AuthenticatedUser | null>(null);
 
   const login = () => setUser(MOCK_USER);
+
   const logout = () => setUser(null);
+
+  const isLoggedIn = !!user;
 
   const value = { user, isLoggedIn, login, logout };
 
