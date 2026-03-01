@@ -57,7 +57,6 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   useEffect(() => {
     saveContext({ dark });
-    document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
 
   const sharedData = { dark, setDark };
