@@ -91,9 +91,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const login = () => setUser(LOGGED_IN_USER);
   const logout = () => setUser(LOGGED_OUT_USER);
 
-  const value = { user, login, logout };
+  const sharedData = { user, login, logout };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={sharedData}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
