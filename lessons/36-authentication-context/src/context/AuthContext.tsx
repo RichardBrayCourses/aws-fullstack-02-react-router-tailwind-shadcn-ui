@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 /////////////
 // USER TYPE
@@ -34,9 +40,9 @@ export const useAuth = () => {
   return value;
 };
 
-/////////////
-// PROVIDER
-/////////////
+////////////////////////////////////
+// LOGGED IN / LOGGED OUT CONSTANTS
+////////////////////////////////////
 
 const LOGGED_OUT_USER = {
   isLoggedIn: false,
@@ -48,12 +54,39 @@ const LOGGED_IN_USER = {
   email: "demo@example.com",
 };
 
+////////////////////////
+// LOAD / SAVE CONTEXT
+////////////////////////
+
+function saveContext(contextData: AuthContextData) {
+  localStorage.setItem("user", JSON.stringify(contextData.user));
+}
+
+function loadContext(): AuthContextData {
+  const stored = localStorage.getItem("user");
+
+  if (stored === null) {
+    return { user: LOGGED_OUT_USER };
+  } else {
+    return { user: JSON.parse(stored) as AuthenticatedUser };
+  }
+}
+
+/////////////
+// PROVIDER
+/////////////
+
 interface AuthProviderProps {
   children: ReactNode;
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<AuthenticatedUser>(LOGGED_OUT_USER);
+  const loadedContext = loadContext();
+  const [user, setUser] = useState<AuthenticatedUser>(loadedContext.user);
+
+  useEffect(() => {
+    saveContext({ user });
+  }, [user]);
 
   const login = () => setUser(LOGGED_IN_USER);
   const logout = () => setUser(LOGGED_OUT_USER);
