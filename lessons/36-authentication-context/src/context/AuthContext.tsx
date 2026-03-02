@@ -15,6 +15,20 @@ export type AuthenticatedUser = {
   email: string | null;
 };
 
+////////////////////////////////////
+// LOGGED IN / LOGGED OUT CONSTANTS
+////////////////////////////////////
+
+const LOGGED_IN_USER = {
+  isLoggedIn: true,
+  email: "demo@example.com",
+};
+
+const LOGGED_OUT_USER = {
+  isLoggedIn: false,
+  email: null,
+};
+
 /////////////
 // CONTEXT
 /////////////
@@ -38,20 +52,6 @@ export const useAuth = () => {
   const value = useContext(AuthContext);
   if (!value) throw new Error("useAuth must be used within AuthProvider");
   return value;
-};
-
-////////////////////////////////////
-// LOGGED IN / LOGGED OUT CONSTANTS
-////////////////////////////////////
-
-const LOGGED_OUT_USER = {
-  isLoggedIn: false,
-  email: null,
-};
-
-const LOGGED_IN_USER = {
-  isLoggedIn: true,
-  email: "demo@example.com",
 };
 
 ////////////////////////
