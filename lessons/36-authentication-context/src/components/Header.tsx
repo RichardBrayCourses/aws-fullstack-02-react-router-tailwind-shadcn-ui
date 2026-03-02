@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const { dark, setDark } = useTheme();
-  const { user, isLoggedIn, login, logout } = useAuth();
+  const { user, login, logout } = useAuth();
   return (
     <header className="bg-sky-500 text-white flex align-center">
       <Button className="m-1" asChild variant="ghost">
@@ -29,14 +29,14 @@ const Header = () => {
         className="m-1"
         variant="ghost"
         onClick={() => {
-          if (isLoggedIn) {
+          if (user.isLoggedIn) {
             logout();
           } else {
             login();
           }
         }}
       >
-        {isLoggedIn ? `Logout ${user?.email}` : "Login"}
+        {user.isLoggedIn ? `Logout ${user?.email}` : "Login"}
       </Button>
     </header>
   );
