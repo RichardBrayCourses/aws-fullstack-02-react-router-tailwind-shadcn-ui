@@ -6,10 +6,18 @@ import {
   useState,
 } from "react";
 
-export interface AuthenticatedUser {
+/////////////
+// USER TYPE
+/////////////
+
+export type AuthenticatedUser = {
   isLoggedIn: boolean;
   email: string | null;
-}
+};
+
+/////////////
+// CONTEXT
+/////////////
 
 interface AuthContextData {
   user: AuthenticatedUser;
