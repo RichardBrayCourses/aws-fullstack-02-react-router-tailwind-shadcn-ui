@@ -15,7 +15,6 @@ import {
 interface ThemeContextData {
   dark: boolean;
 }
-
 interface ThemeContextValue extends ThemeContextData {
   setDark: Dispatch<SetStateAction<boolean>>;
 }

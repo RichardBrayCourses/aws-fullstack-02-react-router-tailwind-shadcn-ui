@@ -1,9 +1,9 @@
 import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
   useState,
+  createContext,
+  useContext,
+  ReactNode,
+  useEffect,
 } from "react";
 
 /////////////
@@ -36,7 +36,6 @@ const LOGGED_OUT_USER = {
 interface AuthContextData {
   user: AuthenticatedUser;
 }
-
 interface AuthContextValue extends AuthContextData {
   login: () => void;
   logout: () => void;
@@ -48,11 +47,11 @@ const AuthContext = createContext<AuthContextValue | null>(null);
 // HELPER
 /////////////
 
-export const useAuth = () => {
+export function useAuth() {
   const value = useContext(AuthContext);
-  if (!value) throw new Error("useAuth must be used within AuthProvider");
+  if (!value) throw new Error("useAuth must be used within <AuthProvider>");
   return value;
-};
+}
 
 ////////////////////////
 // LOAD / SAVE CONTEXT
@@ -63,12 +62,12 @@ function saveContext(contextData: AuthContextData) {
 }
 
 function loadContext(): AuthContextData {
-  const stored = localStorage.getItem("user");
+  const storedData = localStorage.getItem("user");
 
-  if (stored === null) {
+  if (storedData === null) {
     return { user: LOGGED_OUT_USER };
   } else {
-    return { user: JSON.parse(stored) as AuthenticatedUser };
+    return { user: JSON.parse(storedData) as AuthenticatedUser };
   }
 }
 
@@ -81,8 +80,7 @@ interface AuthProviderProps {
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const loadedContext = loadContext();
-  const [user, setUser] = useState<AuthenticatedUser>(loadedContext.user);
+  const [user, setUser] = useState(loadContext().user);
 
   useEffect(() => {
     saveContext({ user });
