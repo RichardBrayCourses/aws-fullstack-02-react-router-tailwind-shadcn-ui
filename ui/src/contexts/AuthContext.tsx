@@ -59,11 +59,11 @@ const LOGGED_IN_USER = {
 ////////////////////////
 
 function saveContext(contextData: AuthContextData) {
-  sessionStorage.setItem("user", JSON.stringify(contextData.user));
+  localStorage.setItem("user", JSON.stringify(contextData.user));
 }
 
 function loadContext(): AuthContextData {
-  const stored = sessionStorage.getItem("user");
+  const stored = localStorage.getItem("user");
 
   if (stored === null) {
     return { user: LOGGED_OUT_USER };
