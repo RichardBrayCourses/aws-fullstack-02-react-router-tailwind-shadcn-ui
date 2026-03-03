@@ -1,52 +1,38 @@
 /* 
 
-const displayPhoto = (photo: PhotoData) => photo.title;
-
-const displayPhoto = (photo: PhotoData) => <div>photo.title</div>;
-
-const displayPhoto = (photo: PhotoData) => <div>{photo.title}</div>;
-
-const displayPhoto = (photo: PhotoData) => (
-  <div key={photo.id}>{photo.title}</div>
-);
-
-const displayPhoto = (photo: PhotoData) => (
-  <div key={photo.id}>
-    <img src={photo.small} />
-  </div>
-);
-
-
-
-const displayPhoto = (photo: PhotoData) => (
-  <div key={photo.id}>
-    <img src={photo.small} />
-  </div>
-);
-
-const displayPhoto = (photo: PhotoData) => (
-  <div key={photo.id}>
-    <img src={photo.small} alt={photo.title} />
-  </div>
-);
-
+const colors=["Red","Orange","Yellow","Green","Blue","Indigo","Violet" ];
 
 const Home = () => {
-  return <div className="flex-1 ">{photos.map(displayPhoto)}</div>;
+  return <div className="flex-1 ">{colors}</div>;
 };
+
+function transformer(color: string) {
+  return <div >{color}</div>;
+}
+return <div className="flex-1 ">{colors.map(transformer)}</div>;
+
+function transformer(color: string, index: number) {
+  return <div key={index}>{color}</div>;
+}
+
+function transformer(color: string, index: number) {
+  return <div key={index} style={{ backgroundColor: color }}>{color}</div>;
+}
 
 */
 
-import { photos, PhotoData } from "@/data/photos";
+import { PhotoData, photos } from "@/data/photos";
 
-const displayPhoto = (photo: PhotoData) => (
-  <div key={photo.id}>
-    <img src={photo.small} alt={photo.title} />
-  </div>
-);
-
+function transformer(photo: PhotoData, index: number) {
+  return (
+    <div key={index}>
+      <img src={photo.small} alt={photo.title} />
+    </div>
+  );
+}
 const Home = () => {
-  return <div className="flex-1 ">{photos.map(displayPhoto)}</div>;
+  const array = photos.map(transformer);
+  return <div className="flex-1 ">{array}</div>;
 };
 
 export default Home;
