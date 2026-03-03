@@ -1,4 +1,12 @@
-const photos = [
+export type PhotoData = {
+  id: string;
+  title: string;
+  description: string;
+  small: string;
+  large: string;
+};
+
+export const photos = [
   {
     id: "photo-1470770841072-f978cf4d019e",
     title: "Where Mountains Breathe",
@@ -54,5 +62,3 @@ const photos = [
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=90",
   },
 ];
-
-export default photos;
