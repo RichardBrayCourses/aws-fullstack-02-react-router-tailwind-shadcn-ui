@@ -6,7 +6,7 @@ function transformer(photo: PhotoData, index: number) {
       <img
         src={index % 2 == 0 ? photo.small : photo.large}
         alt={photo.title}
-        className="w-full h-auto"
+        className="w-full  h-auto"
       />
     </div>
   );
