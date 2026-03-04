@@ -28,8 +28,11 @@ const noMatches = () => (
 );
 
 const match = (photo: PhotoData, query: string): boolean => {
-  const titleMatch = photo.title.toLowerCase().includes(query);
-  const descriptionMatch = photo.description.toLowerCase().includes(query);
+  const titleMatch = photo.title.trim().toLowerCase().includes(query);
+  const descriptionMatch = photo.description
+    .trim()
+    .toLowerCase()
+    .includes(query);
   return titleMatch || descriptionMatch;
 };
 
@@ -40,19 +43,18 @@ const Home = () => {
 
   const filtered = photos.filter((photo) => match(photo, query));
 
+  const array = filtered.map(transformer);
   return (
-    <div className="max-w-5xl mx-auto p-4 ">
-      <div className="mb-6">
-        <Input
-          value={searchText}
-          onChange={(event) => setSearchText(event.target.value)}
-          placeholder="Search photos..."
-        />
-      </div>
+    <div className="max-w-5xl mx-auto p-4">
+      <Input
+        className="mb-6"
+        value={searchText}
+        onChange={(event) => {
+          setSearchText(event.target.value);
+        }}
+      />
       {query && !filtered.length && noMatches()}
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-6">
-        {filtered.map(transformer)}
-      </div>
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-6">{array}</div>
     </div>
   );
 };
