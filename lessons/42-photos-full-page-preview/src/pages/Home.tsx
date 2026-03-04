@@ -65,20 +65,22 @@ const Home = () => {
       </div>
 
       {selectedPhoto && (
-        <div className="fixed inset-0 z-50 bg-background">
-          <button
-            type="button"
-            onClick={() => setSelectedPhoto(null)}
-            className="absolute top-4 right-4 z-10 text-4xl font-bold"
-          >
-            ×
-          </button>
+        <div className="fixed inset-0 z-50 bg-background p-6 flex items-center justify-center">
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setSelectedPhoto(null)}
+              className="absolute top-4 right-4 z-10 text-4xl font-bold"
+            >
+              ×
+            </button>
 
-          <img
-            src={selectedPhoto.large}
-            alt={selectedPhoto.title}
-            className="absolute inset-0 w-full h-full p-6 object-contain"
-          />
+            <img
+              src={selectedPhoto.large}
+              alt={selectedPhoto.title}
+              className="max-w-[calc(100vw-3rem)] max-h-[calc(100vh-3rem)] object-contain"
+            />
+          </div>
         </div>
       )}
     </div>
