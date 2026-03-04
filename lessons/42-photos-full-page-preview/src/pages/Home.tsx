@@ -70,16 +70,26 @@ const Home = () => {
             <button
               type="button"
               onClick={() => setSelectedPhoto(null)}
-              className="absolute top-4 right-4 z-10 text-4xl font-bold opacity-40 hover:opacity-100 transition-opacity"
+              className="absolute top-4 right-4 z-10 text-4xl font-bold opacity-40 hover:opacity-100 transition-opacity text-white"
             >
               ×
             </button>
 
-            <img
-              src={selectedPhoto.large}
-              alt={selectedPhoto.title}
-              className="max-w-[90vw] max-h-[90vh] object-contain rounded-xl"
-            />
+            <div className="bg-black rounded-xl overflow-hidden">
+              <img
+                src={selectedPhoto.large}
+                alt={selectedPhoto.title}
+                className="max-w-[90vw] max-h-[85vh] w-full object-contain"
+              />
+              <div className="p-4">
+                <div className="text-white text-sm font-semibold">
+                  {selectedPhoto.title}
+                </div>
+                <div className="text-white/70 text-xs">
+                  {selectedPhoto.description}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
