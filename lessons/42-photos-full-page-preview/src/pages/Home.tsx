@@ -70,7 +70,7 @@ const Home = () => {
             <button
               type="button"
               onClick={() => setSelectedPhoto(null)}
-              className="absolute top-4 right-4 z-10 text-4xl font-bold"
+              className="absolute top-4 right-4 z-10 text-4xl font-bold opacity-40 hover:opacity-100 transition-opacity"
             >
               ×
             </button>
@@ -78,7 +78,7 @@ const Home = () => {
             <img
               src={selectedPhoto.large}
               alt={selectedPhoto.title}
-              className="max-w-[calc(100vw-3rem)] max-h-[calc(100vh-3rem)] object-contain"
+              className="max-w-[calc(100vw-3rem)] max-h-[calc(100vh-3rem)] object-contain rounded-xl"
             />
           </div>
         </div>
