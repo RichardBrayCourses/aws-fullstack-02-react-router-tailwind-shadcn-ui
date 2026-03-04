@@ -68,9 +68,12 @@ const Home = () => {
         <div className="fixed inset-0 z-50 bg-background">
           <button
             type="button"
-            className="absolute inset-0"
             onClick={() => setSelectedPhoto(null)}
-          />
+            className="absolute top-4 right-4 z-10 text-4xl font-bold"
+          >
+            ×
+          </button>
+
           <img
             src={selectedPhoto.large}
             alt={selectedPhoto.title}
