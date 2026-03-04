@@ -78,7 +78,7 @@ const Home = () => {
             <img
               src={selectedPhoto.large}
               alt={selectedPhoto.title}
-              className="max-w-[calc(100vw-3rem)] max-h-[calc(100vh-3rem)] object-contain rounded-xl"
+              className="max-w-[90vw] max-h-[90vh] object-contain rounded-xl"
             />
           </div>
         </div>
