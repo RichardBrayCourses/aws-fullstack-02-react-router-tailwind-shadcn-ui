@@ -56,9 +56,11 @@ const Home = () => {
 
       {query && !filtered.length && noMatches()}
 
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-6">
-        {transformedImages}
-      </div>
+      {!selectedPhoto && (
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-6">
+          {transformedImages}
+        </div>
+      )}
 
       {selectedPhoto && (
         <Preview photo={selectedPhoto} setPhoto={setSelectedPhoto} />
