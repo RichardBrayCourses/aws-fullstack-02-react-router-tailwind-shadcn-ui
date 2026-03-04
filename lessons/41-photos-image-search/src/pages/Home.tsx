@@ -43,7 +43,7 @@ const Home = () => {
       <div className="mb-6">
         <Input
           value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={(event) => setSearchText(event.target.value)}
           placeholder="Search photos..."
         />
       </div>
