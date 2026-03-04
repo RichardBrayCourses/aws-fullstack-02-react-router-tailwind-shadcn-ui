@@ -27,16 +27,18 @@ const noMatches = () => (
   </div>
 );
 
+const match = (photo: PhotoData, query: string): boolean => {
+  const titleMatch = photo.title.toLowerCase().includes(query);
+  const descriptionMatch = photo.description.toLowerCase().includes(query);
+  return titleMatch || descriptionMatch;
+};
+
 const Home = () => {
   const [searchText, setSearchText] = useState("");
 
   const query = searchText.trim().toLowerCase();
 
-  const filtered = photos.filter(
-    (p) =>
-      p.title.toLowerCase().includes(query) ||
-      p.description.toLowerCase().includes(query),
-  );
+  const filtered = photos.filter((photo) => match(photo, query));
 
   return (
     <div className="max-w-5xl mx-auto p-4 ">
