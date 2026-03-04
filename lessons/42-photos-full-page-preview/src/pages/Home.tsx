@@ -45,6 +45,9 @@ const Home = () => {
 
   const query = searchText.trim().toLowerCase();
   const filtered = photos.filter((photo) => match(photo, query));
+  const transformedImages = filtered.map((photo, index) =>
+    transformer(photo, index, setSelectedPhoto),
+  );
 
   return (
     <div className="max-w-5xl mx-auto p-4 ">
@@ -59,9 +62,7 @@ const Home = () => {
       {query && !filtered.length && noMatches()}
 
       <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-6">
-        {filtered.map((photo, index) =>
-          transformer(photo, index, setSelectedPhoto),
-        )}
+        {transformedImages}
       </div>
 
       {selectedPhoto && (
