@@ -56,7 +56,7 @@ const Home = () => {
   );
 
   return (
-    <div className="max-w-5xl mx-auto pt-0 px-4 pb-4">
+    <div className="max-w-5xl mx-auto pt-0 px-4">
       <Input
         className="mb-6"
         value={searchText}
