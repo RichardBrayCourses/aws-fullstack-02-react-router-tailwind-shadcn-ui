@@ -6,30 +6,19 @@ interface PreviewProps {
 }
 const Preview = ({ photo, setPhoto }: PreviewProps) => {
   return (
-    <div className="fixed inset-0 z-50 bg-background p-6 flex items-center justify-center">
-      <div className="relative">
-        <button
-          type="button"
-          onClick={() => setPhoto(null)}
-          className="absolute top-4 right-4 z-10 text-4xl font-bold opacity-40 hover:opacity-100 transition-opacity text-white"
-        >
-          ×
-        </button>
-
-        <div className="bg-black rounded-xl overflow-hidden">
-          <img
-            src={photo.large}
-            alt={photo.title}
-            className="max-w-[90vw] max-h-[85vh] w-full object-contain"
-          />
-          <div className="p-4">
-            <div className="text-white text-sm font-semibold">
-              {photo.title}
-            </div>
-            <div className="text-white/70 text-xs">{photo.description}</div>
-          </div>
-        </div>
-      </div>
+    <div className="fixed inset-0 bg-white dark:bg-black p-4">
+      <img
+        src={photo.large}
+        alt={photo.title}
+        className="w-full h-full object-contain"
+      />
+      <button
+        type="button"
+        onClick={() => setPhoto(null)}
+        className="absolute top-5 right-5 z-10 flex items-center justify-center w-10 h-10 text-4xl font-bold opacity-40 hover:opacity-100 transition-opacity rounded-full bg-white/90 text-black"
+      >
+        <span className="-translate-y-0.5">×</span>
+      </button>
     </div>
   );
 };
