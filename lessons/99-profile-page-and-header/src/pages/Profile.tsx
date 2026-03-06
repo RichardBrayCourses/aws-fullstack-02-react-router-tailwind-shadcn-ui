@@ -4,7 +4,7 @@ const Profile = () => {
   const { user } = useAuth();
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4">
+    <div className="w-full max-w-5xl mx-auto p-4 pt-0">
       <div className="bg-card rounded-lg border shadow-sm p-6">
         <p className="text-sm text-muted-foreground mb-1">Status</p>
         <p className="text-lg mb-4">
