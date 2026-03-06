@@ -22,3 +22,12 @@ const Profile = () => {
 };
 
 export default Profile;
+
+/*
+
+  <p className="text-sm text-muted-foreground">Status</p>
+  <p className="text-lg">Logged In</p>
+  <p className="text-sm text-muted-foreground">Email</p>
+  <p className="text-lg">test@test.com</p>
+
+*/
