@@ -26,8 +26,8 @@ export default Profile;
 /*
 
   <p className="text-sm text-muted-foreground">Status</p>
-  <p className="text-lg">Logged In</p>
+  <p className="text-lg">{user.isLoggedIn ? "Logged in" : "Logged out"}</p>
   <p className="text-sm text-muted-foreground">Email</p>
-  <p className="text-lg">test@test.com</p>
+  <p className="text-lg">{user.email}</p>
 
 */
