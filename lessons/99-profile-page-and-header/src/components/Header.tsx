@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header className="w-full max-w-5xl mx-auto flex align-center pr-4">
-      <Button className="m-1" asChild variant="ghost">
+      <Button className="m-1 ml-4" asChild variant="ghost">
         <Link to="/">Home</Link>
       </Button>
       <Button className="m-1" asChild variant="ghost">
